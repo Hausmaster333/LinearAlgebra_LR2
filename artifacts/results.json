@@ -1,0 +1,119 @@
+{
+  "config": {
+    "epochs": 100,
+    "lr": 0.1,
+    "batch_size": 32,
+    "random_state": 42
+  },
+  "figures": {
+    "base_loss": "artifacts\\figures\\base_loss.png",
+    "base_boundary": "artifacts\\figures\\base_decision_boundary.png",
+    "base_errors": "artifacts\\figures\\base_errors.png",
+    "roc": "artifacts\\figures\\roc_curve.png",
+    "learning_rate_loss": "artifacts\\figures\\learning_rate_loss.png",
+    "learning_rate_accuracy": "artifacts\\figures\\learning_rate_accuracy.png",
+    "batch_size_loss": "artifacts\\figures\\batch_size_loss.png",
+    "initialization_loss": "artifacts\\figures\\initialization_loss.png",
+    "custom_linear_boundary": "artifacts\\figures\\custom_linear_boundary.png",
+    "custom_xor_boundary": "artifacts\\figures\\custom_xor_boundary.png",
+    "custom_circle_boundary": "artifacts\\figures\\custom_circle_boundary.png",
+    "loss_comparison": "artifacts\\figures\\loss_comparison.png",
+    "l2_loss": "artifacts\\figures\\l2_loss.png",
+    "l2_weight_norm": "artifacts\\figures\\l2_weight_norm.png",
+    "momentum_loss": "artifacts\\figures\\momentum_loss.png",
+    "cross_validation": "artifacts\\figures\\cross_validation.png",
+    "final_boundary": "artifacts\\figures\\final_decision_boundary.png"
+  },
+  "tables": {
+    "base_metrics": "artifacts\\tables\\base_metrics.csv",
+    "learning_rate": "artifacts\\tables\\learning_rate.csv",
+    "batch_size": "artifacts\\tables\\batch_size.csv",
+    "initialization": "artifacts\\tables\\initialization.csv",
+    "custom_data": "artifacts\\tables\\custom_data.csv",
+    "loss_comparison": "artifacts\\tables\\loss_comparison.csv",
+    "l2_regularization": "artifacts\\tables\\l2_regularization.csv",
+    "momentum": "artifacts\\tables\\momentum.csv",
+    "cross_validation": "artifacts\\tables\\cross_validation.csv"
+  },
+  "sections": {
+    "base": {
+      "label": "base",
+      "lr": 0.1,
+      "batch_size": 32,
+      "init": "small_random",
+      "train_accuracy": 0.8657142857142858,
+      "test_accuracy": 0.8866666666666667,
+      "test_precision": 0.8536585365853658,
+      "test_recall": 0.9333333333333333,
+      "test_f1": 0.8917197452229298,
+      "test_roc_auc": 0.9413333333333334,
+      "final_train_loss": 0.3309330526280854,
+      "final_val_loss": 0.30291760562460396,
+      "weight_norm": 3.1511300977430525,
+      "bias": -0.3141339880731734
+    },
+    "learning_rate_best": {
+      "label": "eta=0.01",
+      "lr": 0.01,
+      "train_accuracy": 0.86,
+      "test_accuracy": 0.8866666666666667,
+      "test_precision": 0.8536585365853658,
+      "test_recall": 0.9333333333333333,
+      "test_f1": 0.8917197452229298,
+      "test_roc_auc": 0.9411555555555555,
+      "final_train_loss": 0.3773031267262934,
+      "final_val_loss": 0.3741407525858973,
+      "weight_norm": 1.6792821070194501,
+      "bias": -0.03764719148141601
+    },
+    "batch_size_best": {
+      "label": "batch=1",
+      "batch_size": 1,
+      "train_accuracy": 0.8657142857142858,
+      "test_accuracy": 0.8866666666666667,
+      "test_precision": 0.8536585365853658,
+      "test_recall": 0.9333333333333333,
+      "test_f1": 0.8917197452229298,
+      "test_roc_auc": 0.9415111111111112,
+      "final_train_loss": 0.3312373884040168,
+      "final_val_loss": 0.3001956797822108,
+      "weight_norm": 3.2762705706530726,
+      "bias": -0.42450945797812456
+    },
+    "momentum_best": {
+      "label": "beta=0.99",
+      "momentum": 0.99,
+      "train_accuracy": 0.86,
+      "test_accuracy": 0.8866666666666667,
+      "test_precision": 0.8536585365853658,
+      "test_recall": 0.9333333333333333,
+      "test_f1": 0.8917197452229298,
+      "test_roc_auc": 0.9415111111111111,
+      "final_train_loss": 0.33120986274879416,
+      "final_val_loss": 0.30120624042676536,
+      "weight_norm": 3.2593018828964744,
+      "bias": -0.2495470980012983
+    },
+    "cross_validation_best": {
+      "lr": 0.1,
+      "batch_size": 16,
+      "mean_accuracy": 0.8657854372612487,
+      "std_accuracy": 0.020936740570435916
+    },
+    "final_model": {
+      "label": "final_cv_model",
+      "lr": 0.1,
+      "batch_size": 16,
+      "train_accuracy": 0.8657142857142858,
+      "test_accuracy": 0.8866666666666667,
+      "test_precision": 0.8536585365853658,
+      "test_recall": 0.9333333333333333,
+      "test_f1": 0.8917197452229298,
+      "test_roc_auc": 0.9422222222222222,
+      "final_train_loss": 0.33080106353326855,
+      "final_val_loss": 0.3011163521143115,
+      "weight_norm": 3.2439650537578557,
+      "bias": -0.35003605998605025
+    }
+  }
+}
