@@ -1,10 +1,16 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 from typing import Any
 
+_mpl_config_dir = Path("tmp/matplotlib").resolve()
+_mpl_config_dir.mkdir(parents=True, exist_ok=True)
+os.environ.setdefault("MPLCONFIGDIR", str(_mpl_config_dir))
+
 import pandas as pd
+from matplotlib import get_data_path
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -23,11 +29,30 @@ from reportlab.pdfbase.ttfonts import TTFont
 
 
 def _font_name() -> str:
-    font_path = Path("C:/Windows/Fonts/arial.ttf")
-    if font_path.exists():
-        pdfmetrics.registerFont(TTFont("Arial", str(font_path)))
-        return "Arial"
-    return "Helvetica"
+    candidates = []
+    if os.environ.get("REPORT_FONT_PATH"):
+        candidates.append(Path(os.environ["REPORT_FONT_PATH"]))
+    candidates.extend(
+        [
+            Path(get_data_path()) / "fonts" / "ttf" / "DejaVuSans.ttf",
+            Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
+            Path("/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf"),
+            Path("C:/Windows/Fonts/arial.ttf"),
+            Path("C:/Windows/Fonts/calibri.ttf"),
+        ]
+    )
+
+    for font_path in candidates:
+        if font_path.exists():
+            font_name = "LabUnicode"
+            if font_name not in pdfmetrics.getRegisteredFontNames():
+                pdfmetrics.registerFont(TTFont(font_name, str(font_path)))
+            return font_name
+
+    raise RuntimeError(
+        "No Unicode TTF font found for PDF report. Set REPORT_FONT_PATH to a font "
+        "with Cyrillic support, for example DejaVuSans.ttf."
+    )
 
 
 def _styles() -> dict[str, ParagraphStyle]:

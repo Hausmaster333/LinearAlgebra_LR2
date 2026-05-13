@@ -16,3 +16,10 @@
 - Verification passed: `.venv\Scripts\python.exe -m unittest discover -s tests` ran 6 tests OK; `.venv\Scripts\python.exe -m compileall main.py src tests` passed.
 - Key observed results: base test accuracy 0.8867, base ROC-AUC 0.9413; best 5-fold CV setting eta = 0.1, batch_size = 16, mean accuracy 0.8658 +/- 0.0209; final CV-selected model test accuracy 0.8867.
 - `.gitignore` intentionally ignores `.venv`, caches, and `tmp/`, but keeps `artifacts/` and `output/` visible because they are deliverables.
+
+## 2026-05-12
+
+- Investigated Linux PDF encoding issue. Cause: `src/report.py` used Windows-only Arial path and silently fell back to ReportLab Helvetica on systems without that font; Helvetica/WinAnsi does not support Cyrillic.
+- Fixed report font selection: use `REPORT_FONT_PATH` if set, otherwise DejaVu Sans from matplotlib, then common Linux/Windows Unicode fonts. Generation now fails with a clear error if no Cyrillic-capable TTF is available.
+- Added project-local `MPLCONFIGDIR` setup in `src/report.py` too, so direct report generation does not write Matplotlib cache outside the project.
+- Rebuilt `output/report.pdf`; `pdffonts` shows embedded subset `DejaVuSans` with Unicode map, and `pdftotext -enc UTF-8` extracts Russian text correctly.
