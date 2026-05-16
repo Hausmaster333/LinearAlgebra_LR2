@@ -27,6 +27,7 @@ from reportlab.platypus import (
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
+
 def _font_name() -> str:
     candidates = []
     if os.environ.get("REPORT_FONT_PATH"):
@@ -52,6 +53,7 @@ def _font_name() -> str:
         "No Unicode TTF font found for PDF report. Set REPORT_FONT_PATH to a font "
         "with Cyrillic support, for example DejaVuSans.ttf."
     )
+
 
 def _styles() -> dict[str, ParagraphStyle]:
     font = _font_name()
@@ -102,10 +104,12 @@ def _styles() -> dict[str, ParagraphStyle]:
         ),
     }
 
+
 def _fmt(value: Any) -> str:
     if isinstance(value, float):
         return f"{value:.4f}"
     return str(value)
+
 
 def _add_table(
     story: list[Any],
@@ -139,6 +143,7 @@ def _add_table(
     story.append(table)
     story.append(Spacer(1, 0.25 * cm))
 
+
 def _add_image(story: list[Any], path: str, width_cm: float = 15.5) -> None:
     image_path = Path(path)
     if not image_path.exists():
@@ -151,8 +156,10 @@ def _add_image(story: list[Any], path: str, width_cm: float = 15.5) -> None:
     story.append(img)
     story.append(Spacer(1, 0.25 * cm))
 
+
 def _p(story: list[Any], text: str, styles: dict[str, ParagraphStyle], style: str = "body") -> None:
     story.append(Paragraph(text, styles[style]))
+
 
 def build_report(
     results_path: str | Path = "artifacts/results.json",
