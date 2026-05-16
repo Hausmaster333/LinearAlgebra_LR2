@@ -1,12 +1,8 @@
 from __future__ import annotations
-
 from dataclasses import dataclass, field
-
 import numpy as np
 
-
 EPS = 1e-12
-
 
 @dataclass
 class TrainingHistory:
@@ -14,7 +10,6 @@ class TrainingHistory:
     val_loss: list[float] = field(default_factory=list)
     train_accuracy: list[float] = field(default_factory=list)
     val_accuracy: list[float] = field(default_factory=list)
-
 
 class Perceptron:
     """Single-layer perceptron trained with mini-batch gradient descent."""
@@ -157,7 +152,6 @@ class Perceptron:
             history.val_accuracy.append(float(np.mean(self.predict(X_val) == y_val)))
 
         return history
-
 
 def accuracy_score(y_true: np.ndarray, y_pred: np.ndarray) -> float:
     y_true = np.asarray(y_true)

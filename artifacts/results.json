@@ -6,34 +6,34 @@
     "random_state": 42
   },
   "figures": {
-    "base_loss": "artifacts\\figures\\base_loss.png",
-    "base_boundary": "artifacts\\figures\\base_decision_boundary.png",
-    "base_errors": "artifacts\\figures\\base_errors.png",
-    "roc": "artifacts\\figures\\roc_curve.png",
-    "learning_rate_loss": "artifacts\\figures\\learning_rate_loss.png",
-    "learning_rate_accuracy": "artifacts\\figures\\learning_rate_accuracy.png",
-    "batch_size_loss": "artifacts\\figures\\batch_size_loss.png",
-    "initialization_loss": "artifacts\\figures\\initialization_loss.png",
-    "custom_linear_boundary": "artifacts\\figures\\custom_linear_boundary.png",
-    "custom_xor_boundary": "artifacts\\figures\\custom_xor_boundary.png",
-    "custom_circle_boundary": "artifacts\\figures\\custom_circle_boundary.png",
-    "loss_comparison": "artifacts\\figures\\loss_comparison.png",
-    "l2_loss": "artifacts\\figures\\l2_loss.png",
-    "l2_weight_norm": "artifacts\\figures\\l2_weight_norm.png",
-    "momentum_loss": "artifacts\\figures\\momentum_loss.png",
-    "cross_validation": "artifacts\\figures\\cross_validation.png",
-    "final_boundary": "artifacts\\figures\\final_decision_boundary.png"
+    "base_loss": "artifacts/figures/base_loss.png",
+    "base_boundary": "artifacts/figures/base_decision_boundary.png",
+    "base_errors": "artifacts/figures/base_errors.png",
+    "roc": "artifacts/figures/roc_curve.png",
+    "learning_rate_loss": "artifacts/figures/learning_rate_loss.png",
+    "learning_rate_accuracy": "artifacts/figures/learning_rate_accuracy.png",
+    "batch_size_loss": "artifacts/figures/batch_size_loss.png",
+    "initialization_loss": "artifacts/figures/initialization_loss.png",
+    "custom_linear_boundary": "artifacts/figures/custom_linear_boundary.png",
+    "custom_xor_boundary": "artifacts/figures/custom_xor_boundary.png",
+    "custom_circle_boundary": "artifacts/figures/custom_circle_boundary.png",
+    "loss_comparison": "artifacts/figures/loss_comparison.png",
+    "l2_loss": "artifacts/figures/l2_loss.png",
+    "l2_weight_norm": "artifacts/figures/l2_weight_norm.png",
+    "momentum_loss": "artifacts/figures/momentum_loss.png",
+    "cross_validation": "artifacts/figures/cross_validation.png",
+    "final_boundary": "artifacts/figures/final_decision_boundary.png"
   },
   "tables": {
-    "base_metrics": "artifacts\\tables\\base_metrics.csv",
-    "learning_rate": "artifacts\\tables\\learning_rate.csv",
-    "batch_size": "artifacts\\tables\\batch_size.csv",
-    "initialization": "artifacts\\tables\\initialization.csv",
-    "custom_data": "artifacts\\tables\\custom_data.csv",
-    "loss_comparison": "artifacts\\tables\\loss_comparison.csv",
-    "l2_regularization": "artifacts\\tables\\l2_regularization.csv",
-    "momentum": "artifacts\\tables\\momentum.csv",
-    "cross_validation": "artifacts\\tables\\cross_validation.csv"
+    "base_metrics": "artifacts/tables/base_metrics.csv",
+    "learning_rate": "artifacts/tables/learning_rate.csv",
+    "batch_size": "artifacts/tables/batch_size.csv",
+    "initialization": "artifacts/tables/initialization.csv",
+    "custom_data": "artifacts/tables/custom_data.csv",
+    "loss_comparison": "artifacts/tables/loss_comparison.csv",
+    "l2_regularization": "artifacts/tables/l2_regularization.csv",
+    "momentum": "artifacts/tables/momentum.csv",
+    "cross_validation": "artifacts/tables/cross_validation.csv"
   },
   "sections": {
     "base": {
@@ -91,8 +91,8 @@
       "test_roc_auc": 0.9415111111111111,
       "final_train_loss": 0.33120986274879416,
       "final_val_loss": 0.30120624042676536,
-      "weight_norm": 3.2593018828964744,
-      "bias": -0.2495470980012983
+      "weight_norm": 3.259301882896475,
+      "bias": -0.2495470980012981
     },
     "cross_validation_best": {
       "lr": 0.1,

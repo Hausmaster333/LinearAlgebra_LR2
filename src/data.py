@@ -1,11 +1,8 @@
 from __future__ import annotations
-
 from dataclasses import dataclass
-
 import numpy as np
 from sklearn.datasets import make_classification
 from sklearn.model_selection import train_test_split
-
 
 @dataclass
 class DataBundle:
@@ -18,7 +15,6 @@ class DataBundle:
     mean: np.ndarray
     std: np.ndarray
 
-
 def standardize_train_test(
     X_train: np.ndarray, X_test: np.ndarray
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -26,7 +22,6 @@ def standardize_train_test(
     std = X_train.std(axis=0)
     std = np.where(std == 0, 1.0, std)
     return (X_train - mean) / std, (X_test - mean) / std, mean, std
-
 
 def prepare_base_data(random_state: int = 42) -> DataBundle:
     X, y = make_classification(
@@ -47,7 +42,6 @@ def prepare_base_data(random_state: int = 42) -> DataBundle:
     X_train, X_test, mean, std = standardize_train_test(X_train_raw, X_test_raw)
     return DataBundle(X_train_raw, X_test_raw, X_train, X_test, y_train, y_test, mean, std)
 
-
 def add_label_noise(y: np.ndarray, noise: float, rng: np.random.Generator) -> np.ndarray:
     if not 0 <= noise <= 1:
         raise ValueError("noise must be in [0, 1]")
@@ -55,7 +49,6 @@ def add_label_noise(y: np.ndarray, noise: float, rng: np.random.Generator) -> np
     flips = rng.random(y.shape[0]) < noise
     y_noisy[flips] = 1 - y_noisy[flips]
     return y_noisy
-
 
 def generate_linear_data(
     n_samples: int = 500,
@@ -74,7 +67,6 @@ def generate_linear_data(
     order = rng.permutation(n_samples)
     return X[order], add_label_noise(y[order], noise, rng)
 
-
 def generate_xor_data(
     n_samples: int = 500,
     spread: float = 0.35,
@@ -89,7 +81,6 @@ def generate_xor_data(
     y = labels[choices]
     return X, add_label_noise(y, noise, rng)
 
-
 def generate_circle_data(
     n_samples: int = 500,
     radius: float = 1.0,
@@ -100,7 +91,6 @@ def generate_circle_data(
     X = rng.uniform(-2.0, 2.0, size=(n_samples, 2))
     y = (np.sum(X * X, axis=1) <= radius * radius).astype(int)
     return X, add_label_noise(y, noise, rng)
-
 
 def stratified_kfold_indices(
     y: np.ndarray, n_splits: int = 5, random_state: int = 42
@@ -123,4 +113,3 @@ def stratified_kfold_indices(
         train_idx = np.setdiff1d(all_indices, val_idx, assume_unique=True)
         result.append((train_idx, val_idx))
     return result
-

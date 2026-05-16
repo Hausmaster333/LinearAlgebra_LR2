@@ -1,14 +1,11 @@
 from __future__ import annotations
-
 import json
 from itertools import product
 from pathlib import Path
 from typing import Any
-
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
-
 from src.data import (
     generate_circle_data,
     generate_linear_data,
@@ -27,12 +24,10 @@ from src.plotting import (
     save_roc_plot,
 )
 
-
 BASE_EPOCHS = 100
 BASE_LR = 0.1
 BASE_BATCH_SIZE = 32
 RANDOM_STATE = 42
-
 
 def _json_ready(value: Any) -> Any:
     if isinstance(value, dict):
@@ -47,13 +42,11 @@ def _json_ready(value: Any) -> Any:
         return value.item()
     return value
 
-
 def _write_table(rows: list[dict[str, Any]], path: Path) -> str:
     path.parent.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame(rows)
     df.to_csv(path, index=False, encoding="utf-8-sig")
     return str(path)
-
 
 def _train(
     X_train: np.ndarray,
@@ -99,7 +92,6 @@ def _train(
     )
     return model, history, train_metrics, val_metrics
 
-
 def _summary_row(
     label: str,
     model: Perceptron,
@@ -123,7 +115,6 @@ def _summary_row(
         "bias": float(model.b),
     }
 
-
 def _split_and_standardize(
     X: np.ndarray, y: np.ndarray, random_state: int = RANDOM_STATE
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
@@ -136,7 +127,6 @@ def _split_and_standardize(
     )
     X_train, X_test, _, _ = standardize_train_test(X_train_raw, X_test_raw)
     return X_train, X_test, y_train, y_test
-
 
 def run_all(output_dir: str | Path = "artifacts") -> dict[str, Any]:
     output_dir = Path(output_dir)
@@ -465,4 +455,3 @@ def run_all(output_dir: str | Path = "artifacts") -> dict[str, Any]:
         encoding="utf-8",
     )
     return results
-

@@ -1,11 +1,8 @@
 import unittest
-
 import numpy as np
-
 from src.data import standardize_train_test, stratified_kfold_indices
 from src.metrics import accuracy, classification_metrics, roc_auc_score
 from src.perceptron import Perceptron
-
 
 class CoreTests(unittest.TestCase):
     def test_sigmoid_range(self):
@@ -50,7 +47,6 @@ class CoreTests(unittest.TestCase):
         model = Perceptron(input_dim=2, random_state=1)
         model.fit(X, y, X, y, epochs=80, lr=0.1, batch_size=2)
         self.assertGreaterEqual(accuracy(y, model.predict(X)), 0.99)
-
 
 if __name__ == "__main__":
     unittest.main()
