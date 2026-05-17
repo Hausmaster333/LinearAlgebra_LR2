@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import os
 from pathlib import Path
 
@@ -8,15 +7,11 @@ _mpl_config_dir.mkdir(parents=True, exist_ok=True)
 os.environ.setdefault("MPLCONFIGDIR", str(_mpl_config_dir))
 
 import matplotlib
-
 matplotlib.use("Agg")
-
 import matplotlib.pyplot as plt
 import numpy as np
-
 from src.metrics import roc_curve_points
 from src.perceptron import Perceptron
-
 
 plt.rcParams.update(
     {
@@ -28,12 +23,11 @@ plt.rcParams.update(
     }
 )
 
-
 def ensure_parent(path: Path | str) -> Path:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    return path
 
+    return path
 
 def save_loss_plot(histories: dict[str, object], path: Path | str, title: str, val_only: bool = False) -> str:
     path = ensure_parent(path)
@@ -49,8 +43,8 @@ def save_loss_plot(histories: dict[str, object], path: Path | str, title: str, v
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
-    return str(path)
 
+    return str(path)
 
 def save_accuracy_plot(histories: dict[str, object], path: Path | str, title: str) -> str:
     path = ensure_parent(path)
@@ -65,8 +59,8 @@ def save_accuracy_plot(histories: dict[str, object], path: Path | str, title: st
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
-    return str(path)
 
+    return str(path)
 
 def save_decision_boundary(
     model: Perceptron,
@@ -103,8 +97,8 @@ def save_decision_boundary(
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
-    return str(path)
 
+    return str(path)
 
 def save_roc_plot(y_true: np.ndarray, scores: np.ndarray, auc: float, path: Path | str, title: str) -> str:
     path = ensure_parent(path)
@@ -121,8 +115,8 @@ def save_roc_plot(y_true: np.ndarray, scores: np.ndarray, auc: float, path: Path
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
-    return str(path)
 
+    return str(path)
 
 def save_bar_plot(
     labels: list[str],
@@ -144,4 +138,5 @@ def save_bar_plot(
     fig.tight_layout()
     fig.savefig(path)
     plt.close(fig)
+
     return str(path)
